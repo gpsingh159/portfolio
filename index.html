@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .container{
+            width: 80%;
+            margin: 0 10%;
+            background-color: rgb(37, 38, 38);
+            height: 500px;
+        }
+        nav{
+            width: 100%;
+            height: 15%;
+            /* background-color: yellowgreen; */
+        }
+        .menu_wrapper{
+                width: 90%;
+                margin: 0 auto;
+                /* background-color: yellow; */
+                height: 100%;
+                clear: both;
+
+        }
+        .logo{
+            width: 20%;
+            height: 100%;
+            /* background-color: blue; */
+            float: left;
+        }
+        .menu{
+            width: 80%;
+            height: 100%;
+            /* background-color: lightblue; */
+            float: left;
+        }
+        .logo>h2{
+            color: white;
+            text-align: center;
+            line-height: 100%;
+            padding-top: 10%;
+        }
+    .menu ul {
+        list-style: none;
+    }
+    .menu ul li {
+        float: right;
+        margin: 20px;
+    }
+    .menu ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 15px;
+        font-size: 1.2em;
+        /* border-bottom: 2px solid rgb(255, 255, 255); */
+
+    }
+    .menu ul li a::after {
+    transition: all ease-in-out .2s;
+    background: none repeat scroll 0 0 #ffffff;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    width: 0%;
+   
+}
+    .menu ul li a:hover:after {
+    width: 100%;
+}
+    .image_wrapper{
+        width: 250px;
+        height: 50%;
+        border-radius: 50%;
+        background-color: rgb(250, 205, 205);
+        margin: 0 auto;
+    }
+    .image_wrapper img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    .org_role{
+        width: 50%;
+        height: 20%;
+        /* background-color: red; */
+        margin:30px auto;
+        text-align: center;
+
+    }
+    .org_role h1{
+        font-size: 1.3em;
+    }
+    .org_role ul {
+        list-style: none;
+    }
+    
+    .org_role ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 15px;
+        font-size: 1.2em;
+        /* border-bottom: 2px solid rgb(255, 255, 255); */
+
+    }
+    .content{
+        /* background-color: yellow; */
+        height: 100%;
+        width: 100%;
+        padding-top: 2%;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+    .inner_content{
+        height: inherit;
+        width: inherit;
+    }
+    .about_us{
+        width: 50%;
+        height: 85%;
+        /* background-color: yellow; */
+        float: left;
+        padding-left: 5%;
+    }
+    .skill{
+        font-size: 1.5em;
+        display: block;
+        font-weight: bold;
+        padding-bottom: 20px;
+
+    }
+    .skill_set{
+        text-transform: uppercase;
+        border-bottom: 10px solid white;
+        position: relative;
+        margin-bottom: 10px;
+        font-family: inherit;
+        width: 90%;
+    }
+    .val{
+        float: right;
+    }
+    .inner_skill{
+        width: 100%;
+     height: 100%;
+    text-decoration: none;
+    font-size: 1.2em;
+    }
+    .line{
+        width: 100%;
+        height: 10px;
+        background-color: #f28c8c;
+        position: absolute;
+    }
+    .skill_set:nth-child(3) .line{
+        width: 70%;
+    }
+    .skill_set:nth-child(4) .line{
+        width: 80%;
+    }
+    .skill_set:nth-child(5) .line{
+        width: 90%;
+    }
+    .about_details{
+        width: 50%;
+        height: 85%;
+        /* background-color: greenyellow; */
+        float: left;
+    }
+    .details_wrapper{
+        width: 94%;
+        height: 90%;
+        /* background-color: red; */
+        padding: 5%;
+        margin: 5% auto;
+    }
+    .details_wrapper  p{
+        margin-bottom: 2%;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <section class="menu_wrapper">
+            <section class="logo">
+                <h2>React Developer</h2>
+            </section>
+            <section class="menu">
+                <ul>
+                    <li><a  href="javascript:void(0)" onclick="about()">About me</a></li>
+                    <li><a  href="javascript:void(0)" onclick="home()">Home</a></li>
+                </ul>
+
+            </section>
+        </section>
+    </nav>
+    <section class="content">
+        <section class="inner_content">
+            
+        </section>
+    </section>
+</section>
+</div>
+
+
+
+<script>
+    const words = ["React Developer",'UI Designer','Software Developer'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let delay = 200;
+    
+    function type() {
+        const typingElement = document.getElementById("role");
+        if (wordIndex < words.length) {
+            if (!isDeleting && charIndex <= words[wordIndex].length) {
+                console.log(words[wordIndex].substring(0, charIndex));
+                typingElement.innerHTML = words[wordIndex].substring(0, charIndex);
+                charIndex++;
+                delay = 200;
+            } else if (isDeleting && charIndex >= 0) {
+                typingElement.innerHTML = words[wordIndex].substring(0, charIndex);
+                charIndex--;
+                delay = 100;
+            }
+// console.log(charIndex, words[wordIndex].length);
+            if (charIndex === words[wordIndex].length) {
+                isDeleting = true;
+                delay = 500;  // Pause before deleting
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex++;
+            }
+        }
+        if (wordIndex >= words.length) {
+            wordIndex = 0;
+        }
+        setTimeout(type, delay);
+    }
+    
+   
+    function home(){
+        const homeContent = `
+         <section class="image_wrapper">
+                <img src="user.jpeg" alt="">
+        </section>
+        <section class="org_role">
+                <h1>I am Gurpreet Singh.</h1>
+            <ul>
+                <li>
+                    <a href="#" id="role"></a>
+                </li>
+            </ul>
+        </section>
+        `;
+        document.querySelector(".inner_content").innerHTML = homeContent;
+        setTimeout(type, 2000);  // Start();
+    }
+
+    window.onload = home();
+
+    function about(){
+        const aboutContent = `
+        <section class="about_data">
+                <section class="about_us">
+                    <span class="skill">Skill Set</span>
+
+                    <section class="skill_set">
+                        <section class="inner_skill">
+                            <span>Html</span>
+                            <i class="val">100%</i>
+                        </section>
+                        <section class="line"></section>
+                    </section>
+
+                    <section class="skill_set">
+                        <section class="inner_skill">
+                            <span>Css</span>
+                            <i class="val">70%</i>
+                        </section>
+                        <section class="line"></section>
+                    </section>
+
+                    <section class="skill_set">
+                        <section class="inner_skill">
+                            <span>javascript</span>
+                            <i class="val">80%</i>
+                        </section>
+                        <section class="line"></section>
+                    </section>
+
+                    <section class="skill_set">
+                        <section class="inner_skill">
+                            <span>React js</span>
+                            <i class="val">90%</i>
+                        </section>
+                        <section class="line"></section>
+                    </section>
+
+                </section>
+                <section class="about_details">
+                <div class="details_wrapper">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, assumenda?</p>
+
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, assumenda?</p>
+
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, assumenda?</p>
+
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, assumenda?</p>
+                    
+                </div>
+            </section>
+        `;
+        document.querySelector(".inner_content").innerHTML = aboutContent;
+
+        function progressBar(){
+            const bar = document.querySelector(".skill_set");
+            const vals = document.querySelectorAll(".val");
+            console.log(vals[0].innerHTML);
+            let i = 30;
+            let id = setInterval(frame, 100);
+            function frame() {
+                if (i >= 90) {  
+                    clearInterval(id);
+                } else {
+                    i = i + 1;
+                    vals.innerHTML = i + "%";
+                    bar.style.width = i + "%";
+                }
+            }
+        }
+        progressBar();
+    }
+
+</script>
+
+</body>
+</html>
